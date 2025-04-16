@@ -1,0 +1,41 @@
+Test Cases for Notes API Endpoints
+
+POST /notes:
+  - Scenario 1: Create a note with valid data.
+    - Description: Send a POST request to /notes with a valid JSON body containing the note content.
+    - Expected Result: The note should be created, and the response should include the new note's ID and content.
+  - Scenario 2: Create a note with no data.
+    - Description: Send a POST request to /notes with empty JSON body.
+    - Expected Result: Should return error, because content is required.
+
+GET /notes:
+  - Scenario 1: List all notes when there are no notes.
+    - Description: Send a GET request to /notes when no notes have been created.
+    - Expected Result: An empty list should be returned.
+  - Scenario 2: List all notes when there are multiple notes.
+    - Description: Send a GET request to /notes after several notes have been created.
+    - Expected Result: A list of all created notes should be returned.
+
+GET /notes/{id}:
+  - Scenario 1: Get a note that exists.
+    - Description: Send a GET request to /notes/{id} with the ID of an existing note.
+    - Expected Result: The note with the specified ID should be returned.
+  - Scenario 2: Get a note that does not exist.
+    - Description: Send a GET request to /notes/{id} with an ID that does not correspond to any existing note.
+    - Expected Result: A "404 Not Found" error should be returned.
+
+PUT /notes/{id}:
+  - Scenario 1: Update a note that exists.
+    - Description: Send a PUT request to /notes/{id} with the ID of an existing note and a JSON body containing updated content.
+    - Expected Result: The note should be updated with the new content, and the updated note should be returned.
+  - Scenario 2: Update a note that does not exist.
+    - Description: Send a PUT request to /notes/{id} with an ID that does not correspond to any existing note and a JSON body with updated content.
+    - Expected Result: A "404 Not Found" error should be returned.
+
+DELETE /notes/{id}:
+  - Scenario 1: Delete a note that exists.
+    - Description: Send a DELETE request to /notes/{id} with the ID of an existing note.
+    - Expected Result: The note should be deleted, and a success response should be returned.
+  - Scenario 2: Delete a note that does not exist.
+    - Description: Send a DELETE request to /notes/{id} with an ID that does not correspond to any existing note.
+    - Expected Result: A "404 Not Found" error should be returned.
